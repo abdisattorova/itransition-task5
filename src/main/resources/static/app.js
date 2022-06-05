@@ -107,25 +107,25 @@ function getMessagesByReceiverId(receiverId) {
 
 function sendText() {
 
-    let dataBodyStr = JSON.stringify(
-        {
-            'title':$("#title").val(),
-            'text': $("#text").val(),
-            'receiverId': $("#receiverId").val(),
-            'receiverName': $("#receiverId").text(),
-            'senderId': currentUser.id,
-            'senderName': currentUser.name
-        });
-    stompClient.send(
-        "/app/send-message",
-        {},
-        dataBodyStr
-    )
+        let dataBodyStr = JSON.stringify(
+            {
+                'title': $("#title").val(),
+                'text': $("#text").val(),
+                'receiverId': $("#receiverId").val(),
+                'receiverName': $("#receiverId").text(),
+                'senderId': currentUser.id,
+                'senderName': currentUser.name
+            });
+        stompClient.send(
+            "/app/send-message",
+            {},
+            dataBodyStr
+        )
 
 
-    appendNewMsg(JSON.parse(dataBodyStr))
-    document.getElementById("title").value = "";
-    document.getElementById("text").value = "";
+        appendNewMsg(JSON.parse(dataBodyStr))
+        document.getElementById("title").value = "";
+        document.getElementById("text").value = "";
 
 }
 

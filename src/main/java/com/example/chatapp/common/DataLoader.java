@@ -23,23 +23,23 @@ public class DataLoader implements CommandLineRunner {
         if (initMode.equals("always")) {
 
 
-            userRepository.save(
-                    new User(
-                            1,
-                            "asadbek",
-                            false,
-                            LocalDateTime.now()
-                    )
-            );
-
-            userRepository.save(
-                    new User(
-                            2,
-                            "umid",
-                            false,
-                            LocalDateTime.now()
-                    )
-            );
+//            userRepository.save(
+//                    new User(
+//                            1,
+//                            "asadbek",
+//                            false,
+//                            LocalDateTime.now()
+//                    )
+//            );
+//
+//            userRepository.save(
+//                    new User(
+//                            2,
+//                            "umid",
+//                            false,
+//                            LocalDateTime.now()
+//                    )
+//            );
         }
     }
 }
