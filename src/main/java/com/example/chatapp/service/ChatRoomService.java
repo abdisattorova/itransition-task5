@@ -28,6 +28,18 @@ public class ChatRoomService {
 
         Integer generatedChatId = (int) (Math.random() * 100_000);
 
+
+        if (sender.getId().equals(receiver.getId())){
+            ChatRoom chatRoom = new ChatRoom(
+                    generatedChatId,
+                    receiver,
+                    sender
+            );
+
+            ChatRoom save = chatRoomRepository.save(chatRoom);
+            return save.getChatId();
+        }
+
         ArrayList<ChatRoom> chatRooms = new ArrayList<>();
 
         ChatRoom chatRoom = new ChatRoom(

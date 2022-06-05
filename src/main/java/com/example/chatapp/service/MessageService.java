@@ -59,7 +59,7 @@ public class MessageService {
                 .orElseThrow(() -> new ResourceAccessException("User not found"));
 
         Message msg = messageRepository.save(new Message(
-                messageDto.getTitle(),
+                        messageDto.getTitle(),
                         messageDto.getText(),
                         receiver,
                         sender,
@@ -72,9 +72,7 @@ public class MessageService {
 
 
         messageDto.setId(msg.getId());
-        //todo: add message date time, status to messageDto
 
-        // {id}/queue/messages
         messagingTemplate.convertAndSendToUser(
                 messageDto.getReceiverId().toString(),
                 "/queue/messages",

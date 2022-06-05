@@ -46,10 +46,23 @@ async function connect() {
             function (messageDto) {
 
                 const data = JSON.parse(messageDto.body);
+                console.log(data);
                 if (data.senderId == currentUser.id || data.senderId == $("#receiverId").val()) {
-                    appendNewMsg(data);
+                    // appendNewMsg(data);
                 } else
-                    alert("You have a new message | " + data.receiverName)
+                    alert("new msg : " + data.text + " from " + data.senderName)
+
+                // if(data.senderId===$("#receiverId").val() ||
+                //     data.senderId===currentUser.id
+                // ) {
+                //     console.log(data);
+                //     appendNewMsg(data);
+                // }else if(data.receiverId===currentUser.id || data.receiverId===$("#receiverId").val()){
+                //     console.log(data);
+                //     appendNewMsg(data);
+                // }else{
+                //     console.alert("new msg : " + data.text + " from " + data.senderName)
+                // }
             }
         );
         stompClient.subscribe(
@@ -75,7 +88,7 @@ function getAllUsers() {
                         $("#receiverId").empty()
                         console.log(res);
                         res.map(user => {
-                            let result = user.id === currentUser.id ? "Saved Messages " : user.name;
+                            let result = user.id === currentUser.id ? "Saved Messages" : user.name;
                             $("#receiverId").append(
                                 "<option value=" + user.id + ">" + result  + "</option>"
                             );
@@ -112,7 +125,7 @@ function sendText() {
                 'title': $("#title").val(),
                 'text': $("#text").val(),
                 'receiverId': $("#receiverId").val(),
-                'receiverName': $("#receiverId").text(),
+                'receiverName': $("#receiverId").val(),
                 'senderId': currentUser.id,
                 'senderName': currentUser.name
             });
