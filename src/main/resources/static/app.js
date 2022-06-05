@@ -135,7 +135,7 @@ function appendNewMsg(message) {
     $("#messages").append("<tr>" +
         "<td align='" + tdAlign + "'>" +
         "<h6>" + message.senderName + "</h6>" +
-        "<h3>" + message.title + message.text + "</h3>" +
+        "<h3>" + message.title + " - " + message.text + "</h3>" +
         "</td>" +
         "</tr>");
 }

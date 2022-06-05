@@ -41,7 +41,8 @@ public class Message {
         this.receiver = receiver;
     }
 
-    public Message(String text, User receiver, User sender, Integer chatId) {
+    public Message(String title,String text, User receiver, User sender, Integer chatId) {
+        this.title=title;
         this.text = text;
         this.receiver = receiver;
         this.sender = sender;

@@ -59,6 +59,7 @@ public class MessageService {
                 .orElseThrow(() -> new ResourceAccessException("User not found"));
 
         Message msg = messageRepository.save(new Message(
+                messageDto.getTitle(),
                         messageDto.getText(),
                         receiver,
                         sender,
