@@ -67,7 +67,7 @@ async function connect() {
         );
         stompClient.subscribe(
             '/user/' + currentUser.id + '/contact',
-            function (){
+            function () {
                 getAllUsers()
             }
         )
@@ -90,7 +90,7 @@ function getAllUsers() {
                         res.map(user => {
                             let result = user.id === currentUser.id ? "Saved Messages" : user.name;
                             $("#receiverId").append(
-                                "<option value=" + user.id + ">" + result  + "</option>"
+                                "<option value=" + user.id + ">" + result + "</option>"
                             );
                         })
                         let user1 = res[0];
@@ -120,25 +120,25 @@ function getMessagesByReceiverId(receiverId) {
 
 function sendText() {
 
-        let dataBodyStr = JSON.stringify(
-            {
-                'title': $("#title").val(),
-                'text': $("#text").val(),
-                'receiverId': $("#receiverId").val(),
-                'receiverName': $("#receiverId").val(),
-                'senderId': currentUser.id,
-                'senderName': currentUser.name
-            });
-        stompClient.send(
-            "/app/send-message",
-            {},
-            dataBodyStr
-        )
+    let dataBodyStr = JSON.stringify(
+        {
+            'title': $("#title").val(),
+            'text': $("#text").val(),
+            'receiverId': $("#receiverId").val(),
+            'receiverName': $("#receiverId").val(),
+            'senderId': currentUser.id,
+            'senderName': currentUser.name
+        });
+    stompClient.send(
+        "/app/send-message",
+        {},
+        dataBodyStr
+    )
 
 
-        appendNewMsg(JSON.parse(dataBodyStr))
-        document.getElementById("title").value = "";
-        document.getElementById("text").value = "";
+    appendNewMsg(JSON.parse(dataBodyStr))
+    document.getElementById("title").value = "";
+    document.getElementById("text").value = "";
 
 }
 
@@ -155,7 +155,7 @@ function appendNewMsg(message) {
 
 function authUser(user) {
 
-    $("#authUser").append( "Hello - "+ user);
+    $("#authUser").append(user);
 }
 
 $(function () {
