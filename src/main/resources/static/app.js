@@ -156,7 +156,14 @@ function appendNewMsg(message) {
 function authUser(user) {
 
     $("#authUser").append(user);
+
 }
+$(document).ready(function(){
+    // var firstName = $('#firstName').text();
+    // var lastName = $('#lastName').text();
+    var intials = $('#authUser').text().charAt(0);
+    var profileImage = $('#profileImage').text(intials);
+});
 
 $(function () {
     $("form").on('submit', function (e) {
